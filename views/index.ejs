@@ -3,11 +3,24 @@
   <head>
     <meta charset="utf-8" />
     <title>Konashi</title>
+    <link rel='stylesheet' href='/stylesheets/ratchet.css' />
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
+
+    <header class="bar-title">
+        <h1 class="title">Konashi</h1>
+        <a id="search_btn" class="button" href="#">Search</a>
+    </header>
+
+    <div class="content">
+    <a id="start_btn" class="button-positive">Start</a>
+    <a id="stop_btn" class="button-negative">Stop</a>
+    </div>    
+
     <script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
     <script type="text/javascript" src="/javascripts/konashi-bridge.min.js"></script>
+    <script type="text/javascript" src="/javascripts/ratchet.js"></script>
     <script type="text/javascript" src="/javascripts/client.js"></script>
   </body>
 </html>

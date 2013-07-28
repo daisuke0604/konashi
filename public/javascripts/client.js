@@ -1,5 +1,7 @@
 $(function() {
 
+    var timer;
+
     // konashiとつながったら
     k.ready(function() {
 
@@ -9,10 +11,20 @@ $(function() {
         k.pinMode(k.LED4, k.OUTPUT);
         k.pinMode(k.LED5, k.OUTPUT);
 
+    });
+
+    // Searchボタン
+    $("#search_btn").click(function() {
+        // konashiを探す
+        k.find();
+    });
+
+    // Startボタン
+    $("#start_btn").click(function() {
         // 100msごとに実行
         var i = 0;
         var dir = true;
-        setInterval(function() {
+        timer = setInterval(function() {
             // LED点灯
             k.digitalWriteAll(1 << (i + k.LED2));
 
@@ -26,8 +38,14 @@ $(function() {
         }, 100);
     });
 
-    // konashiを探す
-    k.find();
+    // Stopボタン
+    $("#stop_btn").click(function() {
+        // タイマ停止
+        clearInterval(timer);
+        // LEDすべてOFF
+        k.digitalWriteAll(0);
+    });
+
 });
 
 
