@@ -10,15 +10,41 @@
   <body>
 
     <header class="bar-title">
-        <h1 class="title">Konashi</h1>
+        <h1 class="title">konashiで遊ぼう!</h1>
         <a id="search_btn" class="button" href="#">Search</a>
     </header>
 
     <div class="content">
-    <div class="content-padded">
-    <a id="start_btn" class="button-positive">Start</a>
-    <a id="stop_btn" class="button-negative">Stop</a>
-    </div>
+    <!--<div class="content-padded">-->
+    <ul class="list">
+        <li>Connect: <span id="target"></span></li>
+        <li>LED2
+            <div id="toggleLED2" class="toggle" data-pin="1">
+                <div class="toggle-handle"></div>
+            </div>
+        </li>
+        <li>LED3
+            <div id="toggleLED3" class="toggle" data-pin="2">
+                <div class="toggle-handle"></div>
+            </div>
+        </li>
+        <li>LED4
+            <div id="toggleLED4" class="toggle" data-pin="3">
+                <div class="toggle-handle"></div>
+            </div>
+        </li>
+        <li>LED5
+            <div id="toggleLED5" class="toggle" data-pin="4">
+                <div class="toggle-handle"></div>
+            </div>
+        </li>
+        <li>KnightRider
+            <div id="toggleKR" class="toggle">
+                <div class="toggle-handle"></div>
+            </div>
+        </li>
+    </ul>
+    <!--</div>-->
     </div>
 
     <script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
