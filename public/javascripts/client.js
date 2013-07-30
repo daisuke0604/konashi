@@ -1,11 +1,14 @@
 $(function() {
-
     "use strict";
     
     var timer;
 
+    $("#loader").css("visibility", "hidden");
+
     // konashiとつながったら
     k.ready(function() {
+
+        $("#loader").css("visibility", "hidden");
 
         // 接続中のkonashiの名前を取得
         k.peripheralName(function(name) {
@@ -20,10 +23,19 @@ $(function() {
 
     });
 
+    // PIOの入力状態が変化
+    k.updatePioInput(function(data) {
+        if (data == 1) {
+            $("#toggleKR").addClass("active");
+            knightRider();
+        }
+    });
+
     // Searchボタン
     $("#search_btn").click(function() {
         // konashiを探す
         k.find();
+        $("#loader").css("visibility", "");
     });
 
     // LED - 個別
@@ -34,10 +46,13 @@ $(function() {
     });
 
     // LED - KnightRider
-    $("#toggleKR").on("toggle", function(e) {
-        var value = $(e.currentTarget).hasClass("active");
-        if (value === true) {
-            // 100msごとに実行
+    $("#toggleKR").on("toggle", function() {
+        knightRider();
+    });
+
+    var knightRider = function() {
+        if ($("#toggleKR").hasClass("active")) {
+            // 200msごとに実行
             var i = 0;
             var dir = true;
             timer = setInterval(function() {
@@ -50,14 +65,14 @@ $(function() {
                 }
                 if (i <= 0) dir = true;
                 if (i >= 3) dir = false;
-            }, 100);
+            }, 200);
         } else {
             // タイマ停止
             clearInterval(timer);
             // LEDすべてOFF
             k.digitalWriteAll(0);
         }
-    });
+    };
 
 });
 

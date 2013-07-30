@@ -10,14 +10,17 @@
   <body>
 
     <header class="bar-title">
-        <h1 class="title">konashiで遊ぼう!</h1>
+        <h1 class="title">konashiで遊ぼ</h1>
         <a id="search_btn" class="button" href="#">Search</a>
     </header>
 
     <div class="content">
     <!--<div class="content-padded">-->
     <ul class="list">
-        <li>Connect: <span id="target"></span></li>
+        <li>Connect: 
+            <span id="target"></span>
+            <img id="loader" src="images/ajax-loader.gif" width="16" height="16" alt="connecting..." />
+        </li>
         <li>LED2
             <div id="toggleLED2" class="toggle" data-pin="1">
                 <div class="toggle-handle"></div>
@@ -46,6 +49,8 @@
     </ul>
     <!--</div>-->
     </div>
+
+
 
     <script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
     <script type="text/javascript" src="/javascripts/konashi-bridge.min.js"></script>
