@@ -25,8 +25,12 @@ $(function() {
 
     // PIOの入力状態が変化
     k.updatePioInput(function(data) {
-        if (data == 1) {
-            $("#toggleKR").addClass("active");
+        if ((data & 1) == 1) {
+            if ($("#toggleKR").hasClass("active")) {
+                $("#toggleKR").removeClass("active");
+            } else {
+                $("#toggleKR").addClass("active");
+            }
             knightRider();
         }
     });
@@ -41,12 +45,14 @@ $(function() {
     // LED - 個別
     $(".toggle").on("toggle", function(e) {
         var pin = $(e.currentTarget).data("pin");
-        var value = $(e.currentTarget).hasClass("active");
-        k.digitalWrite(pin, (value)? k.HIGH : k.LOW);
+        if (pin !== undefined) {
+            var value = $(e.currentTarget).hasClass("active");
+            k.digitalWrite(pin, (value)? k.HIGH : k.LOW);
+        }
     });
 
     // LED - KnightRider
-    $("#toggleKR").on("toggle", function() {
+    $("#toggleKR").bind("toggle", function() {
         knightRider();
     });
 
