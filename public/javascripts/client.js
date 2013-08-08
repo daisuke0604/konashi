@@ -64,13 +64,9 @@ $(function() {
             timer = setInterval(function() {
                 // LED点灯
                 k.digitalWriteAll(1 << (i + k.LED2));
-                if (dir) {
-                    i++;
-                } else {
-                    i--;
-                }
-                if (i <= 0) dir = true;
-                if (i >= 3) dir = false;
+                i += dir;
+                if (i <= 0) dir = 1;
+                if (i >= 3) dir = -1;
             }, 200);
         } else {
             // タイマ停止
